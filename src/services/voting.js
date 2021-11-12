@@ -15,6 +15,7 @@ const getAll = async() => {
 };
 
 const create = async(vote) => {
+    console.log(vote);
     const res = await axios.post(baseUrl, vote, getConfig());
     return res.data;
 };

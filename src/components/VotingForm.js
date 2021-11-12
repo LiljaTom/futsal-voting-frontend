@@ -10,7 +10,8 @@ import { initializePlayers } from '../reducers/playersReducer';
 import { createNotification } from '../reducers/notificationReducer';
 
 const VotingForm = () => {
-    const players = useSelector(state => state.players);
+    const players = useSelector(state => state.players)
+        .sort((a, b) => a.name.localeCompare(b.name));
 
     const dispatch = useDispatch();
     const navigate = useNavigate();

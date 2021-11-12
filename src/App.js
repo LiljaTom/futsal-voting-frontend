@@ -88,6 +88,9 @@ const App = () => {
                                 {user && <Link style={padding} to="/players/new">Add player</Link>}
                             </Nav.Link>
                             <Nav.Link href="#" as="span">
+                                {user && <Link style={padding} to="/billGates">Reset database</Link>}
+                            </Nav.Link>
+                            <Nav.Link href="#" as="span">
                                 {user
                                     ? <span><em>{user.username} logged in</em> <button onClick={handleLogout}>Logout</button></span>
                                     : <Link style={padding} to="/login">Login</Link>
@@ -128,9 +131,11 @@ const App = () => {
                         <Nav.Link href="#" as="span">
                             <Link style={padding} to="/players">Players</Link>
                         </Nav.Link>
+                        { user &&
                         <Nav.Link href="#" as="span">
                             <Link style={padding} to="/voting">Voting</Link>
                         </Nav.Link>
+                        }
                         <Nav.Link href="#" as="span">
                             <Link style={padding} to="/votes">Votes</Link>
                         </Nav.Link>
