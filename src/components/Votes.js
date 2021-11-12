@@ -7,6 +7,14 @@ const Votes = () => {
 
     const votes = useSelector(state => state.votes);
 
+    if(votes.length === 0) {
+        return(
+            <div className="container">
+                No votes yet
+            </div>
+        );
+    }
+
     return(
         <div className="container">
             <h2>Votes</h2>

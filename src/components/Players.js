@@ -1,30 +1,24 @@
 import React from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 
 const Players = () => {
     const players = useSelector(state => state.players);
-    const user = useSelector(state => state.user);
-    const navigate = useNavigate();
-
-    const handleChangeToForm = () => {
-        navigate('/players/new');
-    };
 
     return (
         <div className="container">
             <h2>Players</h2>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Votes
-                </th>
-            </tr>
             <Table striped>
                 <tbody>
+                    <tr>
+                        <th>
+                    Name
+                        </th>
+                        <th>
+                    Votes
+                        </th>
+                    </tr>
                     {players.map(player =>
                         <tr key={player.id}>
                             <td>
@@ -37,7 +31,6 @@ const Players = () => {
                     )}
                 </tbody>
             </Table>
-            {user.username === 'Admin' && <Button variant="primary" onClick={handleChangeToForm}>Add new player</Button>}
         </div>
     );
 };

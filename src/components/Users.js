@@ -8,7 +8,7 @@ const Users = () => {
     return(
         <div className="container">
             <h2>Users</h2>
-            <Table stripped>
+            <Table striped>
                 <tbody>
                     <tr>
                         <td>Username</td>

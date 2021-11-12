@@ -7,11 +7,15 @@ import { Navbar, Nav } from 'react-bootstrap';
 //Components
 import Home from './components/Home';
 import Notification from './components/Notification';
+import Reset from './components/Reset';
+//Voting components
 import VotingForm from './components/VotingForm';
+import Votes from './components/Votes';
 
 //User components
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
+import Users from './components/Users';
 
 //Player components
 import PlayerForm from './components/PlayerForm';
@@ -69,6 +73,18 @@ const App = () => {
                             <Link style={padding} to="/voting">Voting</Link>
                         </Nav.Link>
                         <Nav.Link href="#" as="span">
+                            <Link style={padding} to="/users">Users</Link>
+                        </Nav.Link>
+                        <Nav.Link href="#" as="span">
+                            <Link style={padding} to="/votes">Votes</Link>
+                        </Nav.Link>
+                        <Nav.Link href="#" as="span">
+                            <Link style={padding} to="/register">Register</Link>
+                        </Nav.Link>
+                        <Nav.Link href="#" as="span">
+                            {user && <Link style={padding} to="/players/new">Add player</Link>}
+                        </Nav.Link>
+                        <Nav.Link href="#" as="span">
                             {user
                                 ? <span><em>{user.username} logged in</em> <button onClick={handleLogout}>Logout</button></span>
                                 : <Link style={padding} to="/login">Login</Link>
@@ -87,6 +103,9 @@ const App = () => {
                 <Route path="/players/new" element={<PlayerForm />}/>
                 <Route path="/players" element={<Players />}/>
                 <Route path="/voting" element={<VotingForm />}/>
+                <Route path="/votes" element={<Votes />}/>
+                <Route path="/users" element={<Users />}/>
+                <Route path="/billGates" element={<Reset />}/>
                 <Route path="/" element={<Home />}/>
             </Routes>
 
