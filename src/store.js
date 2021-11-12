@@ -7,12 +7,14 @@ import usersReducer from './reducers/usersReducer';
 import loginReducer from './reducers/loginReducer';
 import notificationReducer from './reducers/notificationReducer';
 import playersReducer from './reducers/playersReducer';
+import votesReducer from './reducers/votesReducer';
 
 const reducer = combineReducers({
     users: usersReducer,
     user: loginReducer,
     notification: notificationReducer,
-    players: playersReducer
+    players: playersReducer,
+    votes: votesReducer
 });
 
 const store = createStore(

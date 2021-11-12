@@ -7,6 +7,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 //Components
 import Home from './components/Home';
 import Notification from './components/Notification';
+import VotingForm from './components/VotingForm';
 
 //User components
 import RegisterForm from './components/RegisterForm';
@@ -21,6 +22,7 @@ import { initializeUsers } from './reducers/usersReducer';
 import { loginUser, logoutUser } from './reducers/loginReducer';
 //import { createNotification } from './reducers/notificationReducer';
 import { initializePlayers } from './reducers/playersReducer';
+import { initializeVotes } from './reducers/votesReducer';
 //Utils
 import storage from './utils/storage';
 
@@ -34,6 +36,7 @@ const App = () => {
     useEffect(() => {
         dispatch(initializeUsers());
         dispatch(initializePlayers());
+        dispatch(initializeVotes());
         const user = storage.loadUser();
         if(user) {
             dispatch(loginUser(user));
@@ -63,6 +66,9 @@ const App = () => {
                             <Link style={padding} to="/players">Players</Link>
                         </Nav.Link>
                         <Nav.Link href="#" as="span">
+                            <Link style={padding} to="/voting">Voting</Link>
+                        </Nav.Link>
+                        <Nav.Link href="#" as="span">
                             {user
                                 ? <span><em>{user.username} logged in</em> <button onClick={handleLogout}>Logout</button></span>
                                 : <Link style={padding} to="/login">Login</Link>
@@ -80,6 +86,7 @@ const App = () => {
                 <Route path="/register" element={<RegisterForm />}/>
                 <Route path="/players/new" element={<PlayerForm />}/>
                 <Route path="/players" element={<Players />}/>
+                <Route path="/voting" element={<VotingForm />}/>
                 <Route path="/" element={<Home />}/>
             </Routes>
 

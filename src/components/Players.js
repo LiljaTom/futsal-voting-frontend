@@ -12,10 +12,17 @@ const Players = () => {
         navigate('/players/new');
     };
 
-
     return (
         <div className="container">
             <h2>Players</h2>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Votes
+                </th>
+            </tr>
             <Table striped>
                 <tbody>
                     {players.map(player =>
