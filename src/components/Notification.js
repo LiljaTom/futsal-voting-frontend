@@ -12,7 +12,7 @@ const Notification = () => {
     const notificationStyle = {
         background: 'lightgrey',
         padding: 10,
-        color: notification.success ? 'green' : 'red'
+        color: notification.type ? 'green' : 'red'
     };
 
     return (

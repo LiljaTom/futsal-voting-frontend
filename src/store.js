@@ -3,12 +3,16 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 
-import userReducer from './reducers/userReducer';
+import usersReducer from './reducers/usersReducer';
 import loginReducer from './reducers/loginReducer';
+import notificationReducer from './reducers/notificationReducer';
+import playersReducer from './reducers/playersReducer';
 
 const reducer = combineReducers({
-    users: userReducer,
-    user: loginReducer
+    users: usersReducer,
+    user: loginReducer,
+    notification: notificationReducer,
+    players: playersReducer
 });
 
 const store = createStore(
