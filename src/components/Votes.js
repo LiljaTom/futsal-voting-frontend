@@ -5,15 +5,8 @@ import { useSelector } from 'react-redux';
 
 const Votes = () => {
 
-    const votes = useSelector(state => state.votes);
-
-    if(votes.length === 0) {
-        return(
-            <div className="container">
-                No votes yet
-            </div>
-        );
-    }
+    const votes = useSelector(state => state.votes)
+        .sort((a, b) => a.user.name.localeCompare(b.user.name));
 
     return(
         <div className="container">
@@ -37,7 +30,7 @@ const Votes = () => {
                     {votes.map(vote =>
                         <tr key={vote.id}>
                             <td>
-                                {vote.username}
+                                {vote.user.name}
                             </td>
                             <td>
                                 {vote.first}

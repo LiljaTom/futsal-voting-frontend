@@ -3,7 +3,8 @@ import { Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 const Users = () => {
-    const users = useSelector(state => state.users);
+    const users = useSelector(state => state.users)
+        .sort((a, b) => a.name.localeCompare(b.name));
 
     return(
         <div className="container">

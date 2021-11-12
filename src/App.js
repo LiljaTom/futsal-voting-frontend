@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     Routes, Route, Link, useNavigate
 } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Image } from 'react-bootstrap';
+import banner from './images/futsalBanner.jpg';
 //Components
 import Home from './components/Home';
 import Notification from './components/Notification';
@@ -57,8 +58,66 @@ const App = () => {
         padding: 5
     };
 
+    if(user && user.username === 'Admin') {
+        return(
+            <div className="container">
+                <Image src={banner} fluid/>
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link href="#" as="span">
+                                <Link style={padding} to="/">Home</Link>
+                            </Nav.Link>
+                            <Nav.Link href="#" as="span">
+                                <Link style={padding} to="/players">Players</Link>
+                            </Nav.Link>
+                            <Nav.Link href="#" as="span">
+                                <Link style={padding} to="/voting">Voting</Link>
+                            </Nav.Link>
+                            <Nav.Link href="#" as="span">
+                                <Link style={padding} to="/users">Users</Link>
+                            </Nav.Link>
+                            <Nav.Link href="#" as="span">
+                                <Link style={padding} to="/votes">Votes</Link>
+                            </Nav.Link>
+                            <Nav.Link href="#" as="span">
+                                <Link style={padding} to="/register">Register</Link>
+                            </Nav.Link>
+                            <Nav.Link href="#" as="span">
+                                {user && <Link style={padding} to="/players/new">Add player</Link>}
+                            </Nav.Link>
+                            <Nav.Link href="#" as="span">
+                                {user
+                                    ? <span><em>{user.username} logged in</em> <button onClick={handleLogout}>Logout</button></span>
+                                    : <Link style={padding} to="/login">Login</Link>
+                                }
+                            </Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+                <Notification />
+
+                <Routes>
+                    <Route path="/login" element={<LoginForm />}/>
+                    <Route path="/register" element={<RegisterForm />}/>
+                    <Route path="/players/new" element={<PlayerForm />}/>
+                    <Route path="/players" element={<Players />}/>
+                    <Route path="/voting" element={<VotingForm />}/>
+                    <Route path="/votes" element={<Votes />}/>
+                    <Route path="/users" element={<Users />}/>
+                    <Route path="/billGates" element={<Reset />}/>
+                    <Route path="/" element={<Home />}/>
+                </Routes>
+            </div>
+        );
+    }
+
     return (
         <div className="container">
+            <Image src={banner} fluid/>
+
+
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -73,16 +132,10 @@ const App = () => {
                             <Link style={padding} to="/voting">Voting</Link>
                         </Nav.Link>
                         <Nav.Link href="#" as="span">
-                            <Link style={padding} to="/users">Users</Link>
-                        </Nav.Link>
-                        <Nav.Link href="#" as="span">
                             <Link style={padding} to="/votes">Votes</Link>
                         </Nav.Link>
                         <Nav.Link href="#" as="span">
                             <Link style={padding} to="/register">Register</Link>
-                        </Nav.Link>
-                        <Nav.Link href="#" as="span">
-                            {user && <Link style={padding} to="/players/new">Add player</Link>}
                         </Nav.Link>
                         <Nav.Link href="#" as="span">
                             {user
@@ -93,8 +146,6 @@ const App = () => {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <h1>Kapteeni äänestys</h1>
-
             <Notification />
 
             <Routes>
@@ -105,7 +156,6 @@ const App = () => {
                 <Route path="/voting" element={<VotingForm />}/>
                 <Route path="/votes" element={<Votes />}/>
                 <Route path="/users" element={<Users />}/>
-                <Route path="/billGates" element={<Reset />}/>
                 <Route path="/" element={<Home />}/>
             </Routes>
 

@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 
 
 const Players = () => {
-    const players = useSelector(state => state.players);
+    const players = useSelector(state => state.players)
+        .sort((a, b) => b.votes - a.votes);
 
     return (
         <div className="container">

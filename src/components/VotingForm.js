@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import voteService from '../services/voting';
 import { createVote } from '../reducers/votesReducer';
 import { initializePlayers } from '../reducers/playersReducer';
+import { createNotification } from '../reducers/notificationReducer';
 
 const VotingForm = () => {
     const players = useSelector(state => state.players);
@@ -27,9 +28,10 @@ const VotingForm = () => {
             const vote = await voteService.create(newVote);
             dispatch(createVote(vote));
             dispatch(initializePlayers());
-            navigate('/');
+            dispatch(createNotification('Vote counted', true));
+            navigate('/players');
         } catch(e) {
-            console.log(e.response.data.error);
+            dispatch(createNotification(`${e.response.data.error}`, false));
         }
     };
 

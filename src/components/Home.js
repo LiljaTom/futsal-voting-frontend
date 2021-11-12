@@ -1,9 +1,12 @@
 import React from 'react';
+//import logo from '../images/logo.jpg';
+//import { Image } from 'react-bootstrap';
 
 const Home = () => {
+
     return (
         <div className="container">
-            Hello world
+           Oi Suomi on
         </div>
     );
 };
