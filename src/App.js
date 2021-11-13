@@ -117,8 +117,8 @@ const App = () => {
     }
 
     return (
-        <div className="container">
-            <Image src={banner} fluid/>
+        <div className="container" style={{ backgroundColor: 'lightgrey' }}>
+            <Image style={{ height:'auto', width:'100%' }} src={banner} />
 
 
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

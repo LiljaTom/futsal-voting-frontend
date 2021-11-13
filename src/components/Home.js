@@ -1,12 +1,12 @@
 import React from 'react';
-//import logo from '../images/logo.jpg';
-//import { Image } from 'react-bootstrap';
+import logo from '../images/logo2.JPG';
+import { Image } from 'react-bootstrap';
 
 const Home = () => {
 
     return (
-        <div className="container">
-           Oi Suomi on
+        <div>
+            <Image style={{ height:'auto', width:'100%' }} src={logo}/>
         </div>
     );
 };
